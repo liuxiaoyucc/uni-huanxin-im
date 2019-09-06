@@ -1,8 +1,8 @@
-# uni-huanxin-im
+# :speech_balloon: uni-huanxin-im
 
 ### Description
 
-:speech_balloon: :speech_balloon: :speech_balloon: 基于环信小程序sdk的uniapp版即时通讯app
+:speech_balloon: :speech_balloon: :speech_balloon: 基于环信小程序sdk的uniapp版即时通讯app 欢迎star
 
 ### Technology Stack
 

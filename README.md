@@ -2,7 +2,7 @@
 
 ### Description
 
-:speech_balloon: :speech_balloon: :speech_balloon: 基于环信小程序sdk的uniapp版即时通讯app 欢迎star
+基于环信小程序sdk的uniapp版即时通讯app 欢迎star :star: :star: :star: 
 
 ### Technology Stack
 

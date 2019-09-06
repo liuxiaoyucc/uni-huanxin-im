@@ -1,11 +1,3 @@
-<style>
-img { 
-	width: 30%;
-	margin: 3%;
-}
-</style>
-
-
 # uni-huanxin-im
 
 #### Description
@@ -42,4 +34,4 @@ __有问题欢迎提issue,欢迎加微信交流__
 4. Create Pull Request
 
 #### 已完成部分展示
-<img title="login" src="https://user-images.githubusercontent.com/33248133/64444919-cca74000-d107-11e9-86ff-edd330ff5398.png" width='30%'><img title="register" src="https://user-images.githubusercontent.com/33248133/64444920-cca74000-d107-11e9-8748-2443c9eef44f.png" width='30%'><img title="token_login" src="https://user-images.githubusercontent.com/33248133/64444921-cca74000-d107-11e9-83b6-25334a3ea709.png" width='30%'>
+<img title="login" src="https://user-images.githubusercontent.com/33248133/64444919-cca74000-d107-11e9-86ff-edd330ff5398.png" width='33%'><img title="register" src="https://user-images.githubusercontent.com/33248133/64444920-cca74000-d107-11e9-8748-2443c9eef44f.png" width='33%'><img title="token_login" src="https://user-images.githubusercontent.com/33248133/64444921-cca74000-d107-11e9-83b6-25334a3ea709.png" width='33%'>

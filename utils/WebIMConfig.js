@@ -27,7 +27,8 @@ let config = {
 	/*
 	 * Application AppKey
 	 */
-	appkey: "",//这里填写环信控制台中的appkey
+	// appkey: "",//这里填写环信控制台中的appkey
+	
 	/*
 	 * Whether to use HTTPS      '1177161227178308#xcx'
 	 * @parameter {Boolean} true or false

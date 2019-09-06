@@ -1,0 +1,26 @@
+<view class="main">
+	<chat-suit-audio
+		id="chat-suit-audio"
+		username="{{ username }}"
+		chatType="{{ chatType }}"
+		bind:newAudioMsg="saveSendMsg"></chat-suit-audio>
+
+	<chat-msglist
+		id="chat-msglist"
+		username="{{ username }}"
+		bind:msglistTap="normalScroll"></chat-msglist>
+</view>
+	<chat-inputbar
+		id="chat-inputbar"
+		username="{{ username }}"
+		chatType="{{ chatType }}"
+
+		bind:newTextMsg="saveSendMsg"
+		bind:newImageMsg="saveSendMsg"
+		bind:newLocationMsg="saveSendMsg"
+		bind:newVideoMsg="saveSendMsg"
+		bind:tapSendAudio="toggleRecordModal"
+
+		bind:inputFocused="shortScroll"
+		bind:inputBlured="normalScroll"></chat-inputbar>
+

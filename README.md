@@ -1,3 +1,11 @@
+<style>
+img { 
+	width: 30%;
+	margin: 3%;
+}
+</style>
+
+
 # uni-huanxin-im
 
 #### Description

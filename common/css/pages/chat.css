@@ -167,7 +167,7 @@ page{
 .list_word {
 	height: 40rpx;
 	display: block;
-	margin-top: 20rpx;
+	margin-top: 26rpx;
 	overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;

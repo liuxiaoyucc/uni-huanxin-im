@@ -34,6 +34,14 @@
             "path" : "pages/setting/setting",
             "style" : {}
         }
+        ,{
+            "path" : "pages/chatroom/chatroom",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/groupChatRoom/groupChatRoom",
+            "style" : {}
+        }
     ],
 	
 	"globalStyle": {

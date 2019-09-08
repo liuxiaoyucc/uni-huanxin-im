@@ -21,8 +21,10 @@
 </template>
 
 <script>
+	
 	let test_account, test_psword; //测试用账号密码
 	let disp = require("../../utils/broadcast");
+	
 	let runAnimation = true; //不知道有啥用,就放着吧
 
 	export default {
@@ -37,6 +39,7 @@
 			}
 		},
 		onLoad() {
+			
 			disp.on("em.xmpp.error.passwordErr", function() {
 				this.$helper.toast('none', '用户名或密码错误', 2000, false, 'bottom');
 			});
@@ -81,6 +84,7 @@
 			}
 		}
 	}
+	
 </script>
 
 <style>

@@ -74,6 +74,9 @@
 	let isfirstTime = true
 
 	export default {
+		components: {
+			
+		},
 		data() {
 			return {
 				focus: false,
@@ -140,39 +143,6 @@
 			this.unReadTotalNotNum = getApp().globalData.saveFriendList.length + getApp().globalData.saveGroupInvitedList.length;
 		},
 		methods: {
-			del_chat(event){
-				let detail = event.currentTarget.dataset.item;
-				let nameList;
-				if (detail.chatType == 'groupchat' || detail.chatType == 'chatRoom') {
-					nameList = {
-						your: detail.info.to
-					};
-				} else {
-					nameList = {
-						your: detail.username
-					};
-				}
-			
-				var myName = wx.getStorageSync("myUsername");
-				var currentPage = getCurrentPages();
-				
-				uni.showModal({
-					title: "删除该聊天记录",
-					confirmText: "删除",
-					success: function(res){
-						if(res.confirm){
-							uni.setStorageSync(nameList.your + myName, "");
-							uni.setStorageSync("rendered_" + nameList.your + myName, "");
-							if(currentPage[0]){
-								currentPage[0].onShow();
-							}
-							disp.fire("em.chat.session.remove");
-						}
-					},
-					fail: function(err){
-					}
-				});
-			},
 			openSearch(){
 				this.search_btn = false;
 				this.search_chats = true;
@@ -185,15 +155,14 @@
 			onSearch(val){
 				let searchValue = val.detail.value
 				let chartList = this.getChatList();
-				let serchList = [];
+				let searchList = [];
 				chartList.forEach((item, index)=>{
 					if(String(item.username).indexOf(searchValue) != -1){
-						serchList.push(item)
+						searchList.push(item)
 					}
 				})
-				this.setData({
-					arr: serchList,
-				})
+				
+				this.arr = searchList
 			},
 			
 			cancel(){
@@ -327,6 +296,78 @@
 					return b.dateTimeNum - a.dateTimeNum
 				})
 				return array;
+			},
+			
+			into_chatRoom(event){
+				let detail = event.currentTarget.dataset.item;
+				
+				//↓↓↓↓ 谁赞成谁反对?
+				//群聊的chatType居然是singlechat？脏数据？ 等sdk重写后整理一下字段
+				if (detail.chatType == 'groupchat' || detail.chatType == 'chatRoom' || detail.groupName) {
+					this.into_groupChatRoom(detail)
+				} else {
+					this.into_singleChatRoom(detail)
+				}
+			},
+			
+			//	单聊
+			into_singleChatRoom(detail){
+				var my = uni.getStorageSync("myUsername");
+				var nameList = {
+					myName: my,
+					your: detail.username
+				};
+				uni.navigateTo({
+					url: "../chatroom/chatroom?username=" + JSON.stringify(nameList)
+				});
+			},
+			
+			//	群聊 和 聊天室 （两个概念）
+			into_groupChatRoom(detail){
+				var my = uni.getStorageSync("myUsername");
+				var nameList = {
+					myName: my,
+					your: detail.groupName,
+					groupId: detail.info.to
+				};
+				uni.navigateTo({
+					url: "../groupChatRoom/groupChatRoom?username=" + JSON.stringify(nameList)
+				});
+			},
+			
+			
+			del_chat(event){
+				let detail = event.currentTarget.dataset.item;
+				let nameList;
+				if (detail.chatType == 'groupchat' || detail.chatType == 'chatRoom') {
+					nameList = {
+						your: detail.info.to
+					};
+				} else {
+					nameList = {
+						your: detail.username
+					};
+				}
+			
+				var myName = uni.getStorageSync("myUsername");
+				var currentPage = getCurrentPages();
+				
+				uni.showModal({
+					title: "删除该聊天记录",
+					confirmText: "删除",
+					success: function(res){
+						if(res.confirm){
+							uni.setStorageSync(nameList.your + myName, "");
+							uni.setStorageSync("rendered_" + nameList.your + myName, "");
+							if(currentPage[0]){
+								currentPage[0].onShow();
+							}
+							disp.fire("em.chat.session.remove");
+						}
+					},
+					fail: function(err){
+					}
+				});
 			},
 			
 		}

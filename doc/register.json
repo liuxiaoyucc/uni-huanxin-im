@@ -1,0 +1,34 @@
+// 注册成功回调数据结构
+{
+	"data": {
+		"path": "/users",
+		"uri": "https://a1.easemob.com/1100190906107692/uni-huanxin-im/users",
+		"timestamp": 1567871853255,
+		"organization": "1100190906107692",
+		"application": "1df14725-7f1d-4cf6-9f32-f3f8f9868276",
+		"entities": [{
+			"uuid": "3431b0e0-d188-11e9-892c-05bb06e45f96",
+			"type": "user",
+			"created": 1567871853301,
+			"modified": 1567871853301,
+			"username": "xyliu",
+			"activated": true
+		}],
+		"action": "post",
+		"duration": 84,
+		"applicationName": "uni-huanxin-im"
+	},
+	"statusCode": 200,
+	"header": {
+		"X-Android-Received-Millis": "1567871853050",
+		"X-Android-Response-Source": "NETWORK 200",
+		"Connection": "keep-alive",
+		"X-Android-Selected-Protocol": "http/1.1",
+		"Transfer-Encoding": "chunked",
+		"_": "HTTP/1.1 200 ",
+		"Content-Type": "application/json;charset=UTF-8",
+		"Date": "Sat, 07 Sep 2019 15:57:33 GMT",
+		"X-Android-Sent-Millis": "1567871852824"
+	},
+	"errMsg": "request:ok"
+}

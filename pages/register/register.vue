@@ -50,7 +50,7 @@
 				if (that.username == "") {
 					this.$helper.toast('none', '请输入用户名！', 2000, false, 'bottom');
 					return;
-				} else if (that.data.password == "") {
+				} else if (that.password == "") {
 					this.$helper.toast('none', '请输入密码！', 2000, false, 'bottom');
 					return;
 				} else {
@@ -61,7 +61,6 @@
 						nickname: "",
 						appKey: this.$im.config.appkey,
 						success: function(res) {
-							console.log('res', res)
 							if (res.statusCode == "200") {
 								that.$helper.toast('none', '注册成功！', 2000, false, 'bottom');
 								var data = {
@@ -75,6 +74,9 @@
 									key: "myUsername",
 									data: that.username
 								});
+								uni.redirectTo({
+									url: '../login/login',
+								})
 							}
 						},
 						error: function(res) {

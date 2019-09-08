@@ -24,11 +24,39 @@
 				"navigationBarTitleText": "uni-huanxin-im"
 			}
         }
+        ,{
+            "path" : "pages/chat/chat",
+            "style" : {
+				"navigationBarTitleText": "uni-huanxin-im"
+			}
+        }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" : {}
+        }
     ],
+	
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "IM",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#7A7E83",
+	    "selectedColor": "#085AB8",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [{
+	        "pagePath": "pages/chat/chat",
+	        "iconPath": "static/images/session@2x.png",
+	        "selectedIconPath": "static/images/sessionhighlight@2x.png",
+	        "text": "聊天"
+	    },{
+	        "pagePath": "pages/setting/setting",
+	        "iconPath": "static/images/setting@2x.png",
+	        "selectedIconPath": "static/images/settinghighlight@2x.png",
+	        "text": "设置"
+	    }]
 	}
 }

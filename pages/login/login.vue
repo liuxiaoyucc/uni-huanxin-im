@@ -37,7 +37,6 @@
 			}
 		},
 		onLoad() {
-			console.log(this.$im);
 			disp.on("em.xmpp.error.passwordErr", function() {
 				this.$helper.toast('none', '用户名或密码错误', 2000, false, 'bottom');
 			});
@@ -58,6 +57,7 @@
 
 
 			login() {
+				this.$helper.toast('loading', '正在初始化客户端...', 10000);
 				runAnimation = !runAnimation
 				if (!test_account && this.name == "") {
 					this.$helper.toast('none', '请输入用户名！', 2000, false, 'bottom');
@@ -71,7 +71,7 @@
 					data: test_account || this.name.toLowerCase()
 				});
 
-				this.$im.conn.open({
+				this.$conn.open({
 					apiUrl: this.$im.config.apiURL,
 					user: test_account || this.name.toLowerCase(),
 					pwd: test_psword || this.psd,

@@ -5,16 +5,10 @@ import helper from './helper/helper.js';
 
 let WebIM = require("utils/WebIM")["default"];
 
-
-WebIM.conn = {
+let conn = {
 	closed: false,
 	curOpenOpt: {},
 	open(opt) {
-		uni.showToast({
-			icon: 'loading',
-			title: '正在初始化客户端...'
-		})
-		console.log(this.curOpenOpt);
 		this.curOpenOpt = opt;
 		WebIM.conn.open(opt);
 		this.closed = false;
@@ -29,6 +23,8 @@ WebIM.conn = {
 };
 
 Vue.prototype.$im = WebIM;
+Vue.prototype.$conn = conn;
+
 Vue.prototype.$helper = helper;
 
 Vue.config.productionTip = false

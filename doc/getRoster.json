@@ -1,0 +1,7 @@
+//获取好友列表后返回的单条好友信息,roster是一个由该obj组成的obj array
+{
+	"subscription": "both",
+	"jid": "1100190906107692#uni-huanxin-im_cc@easemob.com",
+	"name": "cc",
+	"groups": []
+}

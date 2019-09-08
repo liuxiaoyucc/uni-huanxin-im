@@ -1,0 +1,6 @@
+//登陆成功回调(onOpened)
+{
+	"canReceive": [300, null],
+	"canSend": [309],
+	"accessToken": "YWMtifyJeNHnEem4qjHuDTO1jB3xRyV_HUz2nzLz-PmGgnY0MbDg0YgR6YksBbsG5F-WAwMAAAFtDuKsuwBPGgDoa19QfoLWv84CgdTGzHKESV5ZspE22bgjrkLMmGExwQ"
+}

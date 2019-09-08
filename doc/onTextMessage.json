@@ -1,0 +1,12 @@
+//收到文本信息,onTextMessage回调
+{
+	"id": "645785756287109120",
+	"type": "chat",
+	"from": "admin",
+	"to": "cc",
+	"data": "你好cc",
+	"ext": {},
+	"error": false,
+	"errorText": "",
+	"errorCode": ""
+}

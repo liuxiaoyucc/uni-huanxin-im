@@ -3,11 +3,11 @@ page{
 	overflow: hidden;
 }
 .chat_title{
-	position: fixed;
+
 	background-color: #fff;
 	width: 100%;
 	z-index: 9;
-	top: 0rpx;
+
 	height: 128rpx;
 }
 .chat_title text{

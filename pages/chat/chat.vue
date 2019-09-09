@@ -1,39 +1,31 @@
 <template>
 	<view>
-		<view class="chat_title" :class="gotop ?  'main_title_hide' : 'main_title_show'">
-			<text>聊天</text>
-		</view>
-		
-		
-		<scroll-view scroll-y="true" class="chat_list_wraper" :class="gotop ?  'goTop' : 'goback'">
-		
-			<view class="search" v-show="search_btn">
-				<view @tap="openSearch">
-					<icon type="search" size="12"></icon>
-					<text>搜索</text>
-				</view>
+		<!-- <view class="search" v-show="search_btn">
+			<view @tap="openSearch">
+				<icon type="search" size="12"></icon>
+				<text>搜索</text>
 			</view>
+		</view> -->
 		
-			<view class="search_input" v-if="search_chats">
-				<view>
-					<icon type="search" size="12"></icon>
-					<input placeholder="搜索" 
-						placeholder-style="color:#9B9B9B;line-height:21px;font-size:15px;" 
-						:focus="focus"
-						confirm-type="search"
-						type='text'
-						@confirm="onSearch"
-						@input="onInput"
-						:value="input_code"
-						></input>
-						<icon type="clear" size="12" @tap.stop.prevent='clearInput' v-if="show_clear"></icon>
+		<!-- <view class="search_input" v-if="search_chats">
+			<view>
+				<icon type="search" size="12"></icon>
+				<input placeholder="搜索" 
+					placeholder-style="color:#9B9B9B;line-height:21px;font-size:15px;" 
+					:focus="focus"
+					confirm-type="search"
+					type='text'
+					@confirm="onSearch"
+					@input="onInput"
+					:value="input_code"
+					></input>
+					<icon type="clear" size="12" @tap.stop.prevent='clearInput' v-if="show_clear"></icon>
 		
-				</view>
-				<text @tap="cancel">取消</text>
 			</view>
-		
-		<view v-for="(item, index) in arr" :key="index" class="chat_list" :data-item="item" @tap.stop.prevent='del_chat'>
-			<!-- <swipe-delete > -->
+			<text @tap="cancel">取消</text>
+		</view> -->
+		<view v-for="(item, index) in arr" :key="index" class="chat_list">
+			<uni-swipe-action :options="options" @click.stop.prevent="action_click($event, item)">
 				<view class="tap_mask" @tap.stop.prevent="into_chatRoom" :data-item="item">
 					<view class="list_box">
 						<view class="list_left" :data-username="item.username">
@@ -53,15 +45,13 @@
 						<view class="em-msgNum" v-if="item.unReadCount > 0 || item.unReadCount == '99+'">{{ item.unReadCount }}</view>
 					</view>
 				</view>
-			<!-- </swipe-delete> -->
+			</uni-swipe-action>
 		</view>
 		
 		<view v-if="arr.length == 0" class="chat_noChat">
 			当前没有历史聊天，添加一个好友开始聊天吧
 		</view>
-		<!-- </view> -->
-		</scroll-view>
-		<!-- bug: margin-bottom 不生效 需要加一个空标签-->
+
 		<view style="height: 1px;"></view>
 		
 		
@@ -70,12 +60,13 @@
 </template>
 
 <script>
+	import uniSwipeAction from "@/comps/uni/uni-swipe-action/uni-swipe-action.vue"
 	let disp = require("../../utils/broadcast");
 	let isfirstTime = true
 
 	export default {
 		components: {
-			
+			uniSwipeAction
 		},
 		data() {
 			return {
@@ -93,6 +84,20 @@
 				
 				gotop: false,
 				input_code: '',
+				
+				options: [{
+					text: '置顶'
+				}, {
+					text: '标记为已读',
+					style: {
+						backgroundColor: 'rgb(254,156,1)'
+					}
+				}, {
+					text: '删除',
+					style: {
+						backgroundColor: 'rgb(255,58,49)'
+					}
+				}],
 			}
 		},
 		onLoad() {
@@ -335,9 +340,19 @@
 				});
 			},
 			
+			action_click(e, item) {
+				switch (e.index){
+					case 2:
+						this.del_chat(item);
+						break;
+					default:
+						break;
+				}
+			},
 			
-			del_chat(event){
-				let detail = event.currentTarget.dataset.item;
+			del_chat(item){
+				
+				let detail = item;
 				let nameList;
 				if (detail.chatType == 'groupchat' || detail.chatType == 'chatRoom') {
 					nameList = {
@@ -352,8 +367,10 @@
 				var myName = uni.getStorageSync("myUsername");
 				var currentPage = getCurrentPages();
 				
+				
 				uni.showModal({
-					title: "删除该聊天记录",
+					title: "",
+					content: "删除该聊天记录?",
 					confirmText: "删除",
 					success: function(res){
 						if(res.confirm){

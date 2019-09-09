@@ -27,7 +27,11 @@
         ,{
             "path" : "pages/chat/chat",
             "style" : {
-				"navigationBarTitleText": "uni-huanxin-im"
+				"navigationBarTitleText": "聊天",
+				"app-plus": {
+					"softinputNavBar": "none",
+					"scrollIndicator": "none"
+				}
 			}
         }
         ,{

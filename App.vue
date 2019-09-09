@@ -20,6 +20,29 @@
 			logs.unshift(Date.now());
 			uni.setStorageSync("logs", logs);
 			
+			disp.on("em.main.ready", function(){
+				me.calcUnReadSpot();
+			});
+			//离开chatroom
+			disp.on("em.chatroom.leave", function(){
+				console.log('em.chatroom.leave');
+				me.calcUnReadSpot();
+			});
+			disp.on("em.chat.session.remove", function(){
+				me.calcUnReadSpot();
+			});
+			disp.on('em.chat.audio.fileLoaded', function(){
+				me.calcUnReadSpot()
+			});
+			
+			disp.on('em.main.deleteFriend', function(){
+				me.calcUnReadSpot()
+			});
+			disp.on('em.chat.audio.fileLoaded', function(){
+				me.calcUnReadSpot()
+			});
+			
+			
 			this.$im.conn.listen({
 				onOpened: (message)=>{
 					this.$im.conn.setPresence();

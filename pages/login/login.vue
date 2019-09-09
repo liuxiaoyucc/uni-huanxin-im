@@ -60,6 +60,10 @@
 
 
 			login() {
+				// uni.switchTab({
+				// 	url: "../chat/chat"
+				// });
+				// return;
 				this.$helper.toast('loading', '正在初始化客户端...', 10000);
 				runAnimation = !runAnimation
 				if (!test_account && this.name == "") {

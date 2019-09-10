@@ -40,7 +40,7 @@
 		},
 		onLoad() {
 			
-			disp.on("em.xmpp.error.passwordErr", function() {
+			disp.on("em.xmpp.error.passwordErr", ()=> {
 				this.$helper.toast('none', '用户名或密码错误', 2000, false, 'bottom');
 			});
 		},

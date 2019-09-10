@@ -298,7 +298,6 @@
 						});
 					}
 					if(error.type ==  this.$im.statusCode.WEBIM_CONNCTION_OPEN_ERROR){
-						uni.hideLoading()
 						disp.fire("em.xmpp.error.passwordErr");
 						// uni.showModal({
 						// 	title: "用户名或密码错误",
@@ -307,7 +306,6 @@
 						// });
 					}
 					if (error.type == this.$im.statusCode.WEBIM_CONNCTION_AUTH_ERROR) {
-						uni.hideLoading()
 						disp.fire("em.xmpp.error.tokenErr");
 					}
 					if (error.type == 'socket_error') {///sendMsgError

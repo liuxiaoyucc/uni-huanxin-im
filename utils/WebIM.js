@@ -164,7 +164,7 @@ WebIM.Emoji = {
 
 WebIM.EmojiObj = {
 	// 相对 emoji.js 路径
-	path: "../../../../../images/faces/",
+	path: "/static/images/faces/",
 	map1: {
 		"[):]": "ee_1.png",
 		"[:D]": "ee_2.png",

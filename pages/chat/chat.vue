@@ -26,7 +26,7 @@
 		</view> -->
 		<view v-for="(item, index) in arr" :key="index" class="chat_list">
 			<uni-swipe-action :options="options" @click.stop.prevent="action_click($event, item)">
-				<view class="tap_mask" @tap.stop.prevent="into_chatRoom" :data-item="item">
+				<view class="tap_mask" @tap.stop.prevent="into_chatRoom(item)">
 					<view class="list_box">
 						<view class="list_left" :data-username="item.username">
 							<view class="list_pic">
@@ -303,8 +303,8 @@
 				return array;
 			},
 			
-			into_chatRoom(event){
-				let detail = event.currentTarget.dataset.item;
+			into_chatRoom(item){
+				let detail = item;
 				
 				//↓↓↓↓ 谁赞成谁反对?
 				//群聊的chatType居然是singlechat？脏数据？ 等sdk重写后整理一下字段

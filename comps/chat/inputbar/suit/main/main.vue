@@ -53,13 +53,11 @@
 		},
 		methods: {
 			focus(){
-				return;
-				this.triggerEvent("inputFocused", null, { bubbles: true });
+				this.$emit('inputFocused')
 			},
 			
 			blur(){
-				return;
-				this.triggerEvent("inputBlured", null, { bubbles: true });
+				this.$emit('inputBlured')
 			},
 			
 			isGroupChat(){
@@ -77,25 +75,23 @@
 			
 			emojiAction(emoji){
 				var str;
-				var msglen = this.data.userMessage.length - 1;
+				var msglen = this.userMessage.length - 1;
 				if(emoji && emoji != "[del]"){
-					str = this.data.userMessage + emoji;
+					str = this.userMessage + emoji;
 				}
 				else if(emoji == "[del]"){
-					let start = this.data.userMessage.lastIndexOf("[");
-					let end = this.data.userMessage.lastIndexOf("]");
+					let start = this.userMessage.lastIndexOf("[");
+					let end = this.userMessage.lastIndexOf("]");
 					let len = end - start;
 					if(end != -1 && end == msglen && len >= 3 && len <= 4){
-						str = this.data.userMessage.slice(0, start);
+						str = this.userMessage.slice(0, start);
 					}
 					else{
-						str = this.data.userMessage.slice(0, msglen);
+						str = this.userMessage.slice(0, msglen);
 					}
 				}
-				this.setData({
-					userMessage: str,
-					inputMessage: str
-				});
+				this.userMessage = str,
+				this.inputMessage = str
 			},
 			
 			sendMessage(){
@@ -128,7 +124,7 @@
 					msg.setGroup("groupchat");
 				}
 				this.$im.conn.send(msg.body);
-				uni.$emit('newTextMsg', {
+				uni.$emit('saveSendMsg', {
 					msg: msg,
 					type: msgType.TEXT,
 				})

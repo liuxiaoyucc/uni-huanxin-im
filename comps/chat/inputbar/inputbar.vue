@@ -1,8 +1,8 @@
 <template>
 	<view class="room_bar">
-		<!-- <chat-suit-emoji id="chat-suit-emoji" bind:newEmojiStr="emojiAction"></chat-suit-emoji> -->
-		<chat-suit-main :username="username" :chatType="chatType" @inputFocused="cancelEmoji"></chat-suit-main>
-		<!-- <chat-suit-image id="chat-suit-image" username="{{ username }}" chatType="{{ chatType }}"></chat-suit-image> -->
+		<chat-suit-emoji ref="emoji" @newEmojiStr="emojiAction"></chat-suit-emoji>
+		<chat-suit-main ref="main" :username="username" :chatType="chatType" @inputBlured="inputBlured" @inputFocused="cancelEmoji"></chat-suit-main>
+		<chat-suit-image ref="image" :username="username" :chatType="chatType"></chat-suit-image>
 
 		
 		<view class="other_func">
@@ -26,9 +26,14 @@
 	let RecordStatus = require("./suit/audio/record_status").RecordStatus;
 	let msgType = require("../msgtype");
 	import chatSuitMain from "@/comps/chat/inputbar/suit/main/main.vue";
+	import chatSuitEmoji from "@/comps/chat/inputbar/suit/emoji/emoji.vue";
+	import chatSuitImage from "@/comps/chat/inputbar/suit/image/image.vue";
+	
 	export default {
 		components: {
-			chatSuitMain
+			chatSuitMain,
+			chatSuitImage,
+			chatSuitEmoji
 		},
 		props: {
 			username: {
@@ -54,16 +59,11 @@
 			
 		},
 		methods: {
+			inputBlured() {
+				this.$emit('inputBlured');
+			},
 			toggleRecordModal(){
-				return;
-				this.triggerEvent(
-					"tapSendAudio",
-					null,
-					{
-						bubbles: true,
-						composed: true
-					}
-				);
+				this.$emit('tapSendAudio');
 			},
 			
 			// sendVideo(){
@@ -72,21 +72,20 @@
 			
 			openCamera(){
 				return;
-				this.data.__comps__.image.openCamera();
+				this.$refs.image.openCamera();
 			},
 			
 			openEmoji(){
-				this.data.__comps__.emoji.openEmoji();
+				this.$refs.emoji.openEmoji();
 			},
 			
 			cancelEmoji(){
-				return;
-				this.data.__comps__.emoji.cancelEmoji();
+				this.$refs.emoji.cancelEmoji();
 			},
 			
 			sendImage(){
 				return;
-				this.data.__comps__.image.sendImage();
+				this.$refs.image.sendImage();
 			},
 			
 			sendLocation(){
@@ -94,7 +93,8 @@
 			},
 			
 			emojiAction(evt){
-				this.data.__comps__.main.emojiAction(evt.detail.msg);
+				this.$refs.main.emojiAction(evt.detail.msg);
+				// this.data.__comps__.main.emojiAction(evt.detail.msg);
 			},
 		}
 	}

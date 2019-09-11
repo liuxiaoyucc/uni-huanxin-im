@@ -3,18 +3,18 @@
 
 		<view class="main">
 			<chat-suit-audio
-				id="chat-suit-audio"
+				ref="audio"
 				:username="username"
 				:chatType="chatType"
 				@newAudioMsg="saveSendMsg"></chat-suit-audio>
 		
 			<chat-msglist
-				id="chat-msglist"
+				ref="msglist"
 				:username="username"
 				@msglistTap="normalScroll"></chat-msglist>
 		</view>
 			<chat-inputbar
-				id="chat-inputbar"
+				ref="inputbar"
 				:username="username"
 				:chatType="chatType"
 		
@@ -60,12 +60,12 @@
 			}
 		},
 		created() {
-			uni.$on('newTextMsg', (data)=>{
+			uni.$on('saveSendMsg', (data)=>{
 				this.saveSendMsg(data);
 			})
 		},
 		beforeDestroy() {
-			uni.$off('newTextMsg');
+			uni.$off('saveSendMsg');
 		},
 		
 		onReady() {
@@ -73,16 +73,16 @@
 		},
 		methods: {
 			toggleRecordModal(){
-				this.data.__comps__.audio.toggleRecordModal();
+				this.$refs.audio.toggleRecordModal();
 			},
 			
 			normalScroll(){
-				this.data.__comps__.msglist.normalScroll();
-				this.data.__comps__.inputbar.cancelEmoji();
+				this.$refs.msglist.normalScroll();
+				this.$refs.inputbar.cancelEmoji();
 			},
 			
 			shortScroll(){
-				this.data.__comps__.msglist.shortScroll();
+				this.$refs.msglist.shortScroll();
 			},
 			
 			saveSendMsg(data){
@@ -92,7 +92,7 @@
 			},
 			
 			getMore(){
-				this.selectComponent('#chat-msglist').getHistoryMsg()
+				this.$refs.msglist.getHistoryMsg()
 			},
 		}
 	}

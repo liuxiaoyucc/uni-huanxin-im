@@ -37,9 +37,9 @@
 								:data-url="item.msg.data" />
 						<video v-if="item.msg.type == 'video'" :src="item.msg.data" controls autoplay />
 					</view>
-					<!-- <audio-msg
+					<audio-msg
 						v-if="item.msg.type == 'audio'"
-						:msg="item"></audio-msg> -->
+						:msg="item"></audio-msg>
 					<view v-else-if="item.msg.type == 'txt' || item.msg.type == 'emoji'">
 						<view class="template" v-for="(d_item, d_index) in item.msg.data" :key="d_index">
 							<text v-if="item.msg.type == 'txt'"  class="msg-text" style="float:left;">{{ d_item.data }}</text>
@@ -59,6 +59,8 @@
 </template>
 
 <script>
+	import audioMsg from "@/comps/chat/msglist/type/audio/audio.vue";
+	
 	let msgStorage = require("../msgstorage");
 	let disp = require("../../../utils/broadcast");
 	let LIST_STATUS = {
@@ -71,7 +73,7 @@
 	let isFail = false
 	export default {
 		components: {
-			
+			audioMsg
 		},
 		props: {
 			username: {
@@ -96,7 +98,7 @@
 			this.visibility = false;
 		},
 		created() {
-			console.log('created');
+			
 		},
 		
 		onReady() {
@@ -151,7 +153,8 @@
 			},
 			
 			onTap(){
-				console.log('onTap');
+				// console.log('onTap');
+				this.$emit('msglistTap');
 				// this.triggerEvent("msglistTap", null, { bubbles: true });
 			},
 			

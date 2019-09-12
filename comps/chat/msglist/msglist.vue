@@ -42,12 +42,13 @@
 						:msg="item"></audio-msg>
 					<view v-else-if="item.msg.type == 'txt' || item.msg.type == 'emoji'">
 						<view class="template" v-for="(d_item, d_index) in item.msg.data" :key="d_index">
-							<text v-if="item.msg.type == 'txt'"  class="msg-text" style="float:left;">{{ d_item.data }}</text>
+							<text v-if="d_item.type == 'txt'"  class="msg-text" style="float:left;">{{ d_item.data }}</text>
 							
-							<image  v-if="item.msg.type == 'emoji'"
+							<image  v-if="d_item.type == 'emoji'"
 									class="avatar"
-									:src="'/static/images/faces/' + item.data"
+									:src="'/static/images/faces/' + d_item.data"
 									style="width:25px; height:25px; margin:0 0 2px 0; float:left;" />
+							
 						</view>
 						
 					</view>

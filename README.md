@@ -2,19 +2,24 @@
 
 ### Description
 
-基于环信小程序sdk的uniapp版即时通讯app 欢迎star :star: :star: :star: 
+基于环信小程序sdk的uniapp版即时通讯app 
+
+测试账号: 
+	username: cc	 	password:	1q2w3e4r
+	username: xyliu 	password:  1q2w3e4r
 
 ### Technology Stack
 
-* VueJs
-* uni-app
+* [VueJs](https://cn.vuejs.org/)
+* [uni-app](https://uniapp.dcloud.io/)
 
 ### 3rd support
 
-* 环信即时通讯
+* [环信即时通讯](https://www.easemob.com/)
 
 ### More
 __欢迎提issue__
+__欢迎star :star: :star: :star:__
 
 
 

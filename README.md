@@ -5,7 +5,9 @@
 基于环信小程序sdk的uniapp版即时通讯app 
 
 测试账号: 
+	
 	username: cc	 	password:	1q2w3e4r
+	
 	username: xyliu 	password:  1q2w3e4r
 
 ### Technology Stack
@@ -19,6 +21,7 @@
 
 ### More
 __欢迎提issue__
+
 __欢迎star :star: :star: :star:__
 
 
@@ -26,7 +29,7 @@ __欢迎star :star: :star: :star:__
 ### Run
 
 1. git clone 到本地
-2. 将项目拖入HbuilderX中运行到手机或模拟器
+2. 将项目拖入[HbuilderX](https://www.dcloud.io/hbuilderx.html)中运行到手机或模拟器
 
 
 ### Contribution

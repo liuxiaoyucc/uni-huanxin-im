@@ -1,6 +1,6 @@
 <template>
 	<view class="audio-player" @tap="audioPlay" :style="{opacity: opcity}">
-		<text class="time">语音消息 {{ time }}</text>
+		<text class="time">{{ time }}</text>
 		<view
 			class="controls play-btn"
 		
@@ -196,7 +196,7 @@
 	}
 	
 	.audio-player .time {
-		font-size: 34rpx;
+		font-size: 30rpx;
 		line-height: 40rpx;
 		flex: 1;
 		text-align: left;

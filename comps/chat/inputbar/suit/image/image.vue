@@ -74,7 +74,7 @@
 							png: true,
 							bmp: true
 						};
-						var str = this.$im.config.appkey.split("#");
+						var str = me.$im.config.appkey.split("#");
 						var width = res.width;
 						var height = res.height;
 						var index = res.path.lastIndexOf(".");
@@ -91,8 +91,8 @@
 								success(res){
 									var data = res.data;
 									var dataObj = JSON.parse(data);
-									var id = this.$im.conn.getUniqueId();		// 生成本地消息 id
-									var msg = new this.$im.message(msgType.IMAGE, id);
+									var id = me.$im.conn.getUniqueId();		// 生成本地消息 id
+									var msg = new me.$im.message(msgType.IMAGE, id);
 									var file = {
 										type: msgType.IMAGE,
 										size: {
@@ -104,7 +104,7 @@
 										filename: tempFilePaths[0]
 									};
 									msg.set({
-										apiUrl: this.$im.config.apiURL,
+										apiUrl: me.$im.config.apiURL,
 										body: file,
 										from: me.username.myName,
 										to: me.getSendToParam(),
@@ -117,7 +117,7 @@
 									if(me.chatType == msgType.chatType.CHAT_ROOM){
 										msg.setGroup("groupchat");
 									}
-									this.$im.conn.send(msg.body);
+									me.$im.conn.send(msg.body);
 									uni.$emit('saveSendMsg', {
 										msg: msg,
 										type: msgType.IMAGE,

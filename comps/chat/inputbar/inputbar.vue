@@ -71,7 +71,6 @@
 			// },
 			
 			openCamera(){
-				return;
 				this.$refs.image.openCamera();
 			},
 			
@@ -84,7 +83,6 @@
 			},
 			
 			sendImage(){
-				return;
 				this.$refs.image.sendImage();
 			},
 			

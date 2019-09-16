@@ -28,6 +28,8 @@
             "path" : "pages/chat/chat",
             "style" : {
 				"navigationBarTitleText": "聊天",
+				// "enablePullDownRefresh": true,
+				"scrollIndicator": "none",
 				"app-plus": {
 					"softinputNavBar": "none",
 					"scrollIndicator": "none"
@@ -36,15 +38,26 @@
         }
         ,{
             "path" : "pages/setting/setting",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "设置"
+			}
         }
         ,{
             "path" : "pages/chatroom/chatroom",
-            "style" : {}
+            "style" : {
+				"scrollIndicator": "none",
+				"navigationBarTitleText": "admin"
+			}
         }
         ,{
             "path" : "pages/groupChatRoom/groupChatRoom",
             "style" : {}
+        }
+        ,{
+            "path" : "pages/main/main",
+            "style" : {
+				"navigationBarTitleText": "通讯录"
+			}
         }
     ],
 	
@@ -64,6 +77,11 @@
 	        "iconPath": "static/images/session@2x.png",
 	        "selectedIconPath": "static/images/sessionhighlight@2x.png",
 	        "text": "聊天"
+	    },{
+	        "pagePath": "pages/main/main",
+	        "iconPath": "static/images/comtacts@2x.png",
+	        "selectedIconPath": "static/images/comtactshighlight@2x.png",
+	        "text": "通讯录"
 	    },{
 	        "pagePath": "pages/setting/setting",
 	        "iconPath": "static/images/setting@2x.png",

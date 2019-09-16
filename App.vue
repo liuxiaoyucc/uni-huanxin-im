@@ -53,31 +53,21 @@
 					}
 				},
 				onReconnect: ()=>{
-					uni.showToast({
-						title: "重连中...",
-						duration: 2000
-					});
+					this.$helper.toast('loading', '重连中...', 2000)
 				},
 				onSocketConnected: ()=>{
-					uni.showToast({
-						title: "socket连接成功",
-						duration: 2000
-					});
+					this.$helper.toast('success', 'socket连接成功', 2000)
 				},
 				onClosed: ()=>{
-					uni.showToast({
-						title: "网络已断开",
-						icon: 'none',
-						duration: 2000
-					});
+					this.$helper.toast('none', '网络已断开', 2000)
 					uni.redirectTo({
-							url: "../login/login"
-						});
+						url: "../login/login"
+					});
 					this.$conn.closed = true;
 					this.$im.conn.close();
 				},
 				onInviteMessage: (message)=>{
-					me.$options.globalData.saveGroupInvitedList.push(message);
+					this.$options.globalData.saveGroupInvitedList.push(message);
 					disp.fire("em.xmpp.invite.joingroup", message);
 					// uni.showModal({
 					// 	title: message.from + " 已邀你入群 " + message.roomid,
@@ -90,7 +80,7 @@
 					// });
 				},
 				onPresence: (message)=>{
-					//console.log("onPresence", message);
+					console.log("onPresence", message);
 					switch(message.type){
 					case "unsubscribe":
 						// pages[0].moveFriend(message);
@@ -102,14 +92,15 @@
 						}
 						else{
 							// pages[0].handleFriendMsg(message);
-							for (let i = 0; i < me.$options.globalData.saveFriendList.length; i ++) {
-						      	if(me.$options.globalData.saveFriendList[i].from === message.from){
-						      		me.$options.globalData.saveFriendList[i] = message
+							for (let i = 0; i < this.$options.globalData.saveFriendList.length; i ++) {
+						      	if(this.$options.globalData.saveFriendList[i].from === message.from){
+						      		this.$options.globalData.saveFriendList[i] = message
 						      		disp.fire("em.xmpp.subscribe");
 						      		return;
 						 		}
 						    }
-							me.$options.globalData.saveFriendList.push(message);
+							this.$options.globalData.saveFriendList.push(message);
+							console.log(JSON.stringify(this.$options.globalData.saveFriendList));
 							disp.fire("em.xmpp.subscribe");
 						}
 						break;
@@ -127,10 +118,7 @@
 						// });
 						break;
 					case "memberJoinPublicGroupSuccess":
-						uni.showToast({
-							title: "已进群",
-							duration: 1000
-						});
+						this.$helper.toast('none', '已进群', 1000)
 						break;
 					// 好友列表
 					// case "subscribed":

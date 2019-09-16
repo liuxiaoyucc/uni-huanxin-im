@@ -137,6 +137,8 @@
 			const me = this;
 			//监听加好友申请
 			disp.on("em.xmpp.subscribe", ()=>{
+				console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+				console.log(this.unReadTotalNotNum);
 				this.messageNum = getApp().globalData.saveFriendList.length;
 				this.unReadTotalNotNum = getApp().globalData.saveFriendList.length + getApp().globalData.saveGroupInvitedList.length;
 			});
@@ -215,41 +217,40 @@
 								member.push(roster[i]);
 							}
 						}
-						me.setData({
-							member: member
-						});
+						me.member = member
 					}
 				};
 				if(message.type == "unsubscribe" || message.type == "unsubscribed"){
-					WebIM.conn.removeRoster({
+					this.$im.conn.removeRoster({
 						to: message.from,
 						success: function(){
-							WebIM.conn.unsubscribed({
+							me.$im.conn.unsubscribed({
 								to: message.from
 							});
-							WebIM.conn.getRoster(rosters);
+							me.$im.conn.getRoster(rosters);
 						}
 					});
 				}
 			},
 			
 			handleFriendMsg(message){
+				let me = this;
 				uni.showModal({
 					title: "添加好友请求",
 					content: message.from + "请求加为好友",
 					success: function(res){
 						if(res.confirm == true){
-							WebIM.conn.subscribed({
+							me.$im.conn.subscribed({
 								to: message.from,
 								message: "[resp:true]"
 							});
-							WebIM.conn.subscribe({
+							me.$im.conn.subscribe({
 								to: message.from,
 								message: "[resp:true]"
 							});
 						}
 						else{
-							WebIM.conn.unsubscribed({
+							me.$im.conn.unsubscribed({
 								to: message.from,
 								message: "rejectAddFriend"
 							});
@@ -263,31 +264,31 @@
 			delete_friend(event){
 				const me = this;
 				var delName = event.currentTarget.dataset.username;
-				var myName = wx.getStorageSync("myUsername");// 获取当前用户名
-				wx.showModal({
+				var myName = uni.getStorageSync("myUsername");// 获取当前用户名
+				uni.showModal({
 					title: "确认删除好友" + delName,
 					cancelText: "取消",
 					confirmText: "删除",
 					success(res){
 						if(res.confirm == true){
-							WebIM.conn.removeRoster({
+							me.$im.conn.removeRoster({
 								to: delName,
 								success: function(){
-									WebIM.conn.unsubscribed({
+									me.$im.conn.unsubscribed({
 										to: delName
 									});
 									// wx.showToast({
 									// 	title: "删除成功",
 									// });
-									me.toastSuccess('删除成功');
+									me.$helper.toast('none', '删除成功');
 									// 删除好友后 同时清空会话
-									wx.setStorageSync(delName + myName, "");
-									wx.setStorageSync("rendered_" + delName + myName, "");
+									uni.setStorageSync(delName + myName, "");
+									uni.setStorageSync("rendered_" + delName + myName, "");
 									me.getRoster();
 									disp.fire('em.main.deleteFriend')
 								},
 								error: function(error){
-									me.toastSuccess('删除失败');
+									me.$helper.toast('none', '删除失败');
 								}
 							});
 						}
@@ -337,7 +338,7 @@
 			
 			add_new(){
 				uni.navigateTo({
-					url: "../add_new/add_new"
+					url: "../add_contact/add_contact"
 				});
 			},
 			

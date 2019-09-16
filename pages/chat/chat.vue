@@ -105,6 +105,7 @@
 			let me = this;
 			//监听加好友申请
 			disp.on("em.xmpp.subscribe", function(){
+				console.log('chatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchatchat');
 				me.messageNum = getApp().globalData.saveFriendList.length;
 				me.unReadTotalNotNum = getApp().globalData.saveFriendList.length + getApp().globalData.saveGroupInvitedList.length;
 			});

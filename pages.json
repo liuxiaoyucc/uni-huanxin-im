@@ -59,6 +59,10 @@
 				"navigationBarTitleText": "通讯录"
 			}
         }
+        ,{
+            "path" : "pages/add_contact/add_contact",
+            "style" : {}
+        }
     ],
 	
 	"globalStyle": {

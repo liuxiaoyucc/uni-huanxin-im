@@ -1,0 +1,13 @@
+//onPresence
+{
+	"from": "cc001",
+	"to": "cc",
+	"fromJid": "1100190906107692#uni-huanxin-im_cc001@easemob.com",
+	"toJid": "1100190906107692#uni-huanxin-im_cc@easemob.com",
+	"type": "subscribe",
+	"chatroom": false,
+	"status": "",
+	"code": "",
+	"presence_type": "",
+	"original_type": "subscribe"
+}

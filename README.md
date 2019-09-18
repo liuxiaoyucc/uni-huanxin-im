@@ -2,7 +2,8 @@
 
 ### Description
 
-基于环信小程序sdk的uniapp版即时通讯app 
+基于环信小程序sdk的uniapp版即时通讯app	
+可同时编译到app及小程序(其他平台由于条件限制尚未测试)
 
 测试账号: 
 	

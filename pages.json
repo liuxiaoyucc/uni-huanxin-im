@@ -61,19 +61,27 @@
         }
         ,{
             "path" : "pages/add_contact/add_contact",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "添加好友"
+			}
         }
         ,{
             "path" : "pages/notification/notification",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "通知"
+			}
         }
         ,{
             "path" : "pages/notification_friend/notification_friend",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "好友请求"
+			}
         }
         ,{
             "path" : "pages/notification_group/notification_group",
-            "style" : {}
+            "style" : {
+				"navigationBarTitleText": "群组邀请"
+			}
         }
     ],
 	

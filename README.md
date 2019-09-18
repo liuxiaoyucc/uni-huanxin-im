@@ -49,3 +49,5 @@ __欢迎star :star: :star: :star:__
 
 ### 已完成部分展示
 <img title="login" src="https://user-images.githubusercontent.com/33248133/64444919-cca74000-d107-11e9-86ff-edd330ff5398.png" width='33%'><img title="chat" src="https://user-images.githubusercontent.com/33248133/64805934-ba744880-d5c4-11e9-92d2-032881167b4d.png" width='33%'><img title="chatroom" src="https://user-images.githubusercontent.com/33248133/64805936-bc3e0c00-d5c4-11e9-82db-90749689c2b2.jpg" width='33%'>
+<img title="contact" src="https://user-images.githubusercontent.com/33248133/65166919-2eef3180-da74-11e9-85e1-4211668d02a5.jpg" width='33%'><img title="add_friend" src="https://user-images.githubusercontent.com/33248133/65166931-344c7c00-da74-11e9-989e-194c89a97c2e.jpg" width='33%'><img title="notification" src="https://user-images.githubusercontent.com/33248133/65166939-36aed600-da74-11e9-8411-973d720431db.png" width='33%'>
+<img title="notification_friend" src="https://user-images.githubusercontent.com/33248133/65166949-39113000-da74-11e9-843a-aef511ce5e48.png" width='33%'>

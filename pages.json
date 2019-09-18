@@ -67,6 +67,14 @@
             "path" : "pages/notification/notification",
             "style" : {}
         }
+        ,{
+            "path" : "pages/notification_friend/notification_friend",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/notification_group/notification_group",
+            "style" : {}
+        }
     ],
 	
 	"globalStyle": {

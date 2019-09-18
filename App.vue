@@ -88,7 +88,7 @@
 					// 好友邀请列表
 					case "subscribe":
 						if(message.status === "[resp:true]"){
-			
+							return;
 						}
 						else{
 							// pages[0].handleFriendMsg(message);
@@ -100,6 +100,7 @@
 						 		}
 						    }
 							this.$options.globalData.saveFriendList.push(message);
+							console.log(JSON.stringify(this.$options.globalData.saveFriendList));
 							disp.fire("em.xmpp.subscribe");
 						}
 						break;
@@ -111,10 +112,10 @@
 						disp.fire("em.xmpp.subscribed");
 						break;
 					case "unsubscribed":
-						// uni.showToast({
-						// 	title: "已拒绝",
-						// 	duration: 1000
-						// });
+						uni.showToast({
+							title: "已拒绝",
+							duration: 1000
+						});
 						break;
 					case "memberJoinPublicGroupSuccess":
 						this.$helper.toast('none', '已进群', 1000)

@@ -52,15 +52,15 @@
 			this.unReadTotalNotNum = getApp().globalData.saveFriendList.length + getApp().globalData.saveGroupInvitedList.length;
 		},
 		methods: {
-			into_friendNot: function(){
+			into_friendNot(){
 				uni.navigateTo({
-					url: "../notification_friendDetail/friendDetail?myName=" + wx.getStorageSync("myUsername")
+					url: "../notification_friend/notification_friend"
 				});
 			},
 			
-			into_groupNot: function(){
+			into_groupNot(){
 				uni.navigateTo({
-					url: "../notification_groupDetail/groupDetail?myName=" + wx.getStorageSync("myUsername")
+					url: "../notification_friend/notification_friend"
 				});
 			},
 		}

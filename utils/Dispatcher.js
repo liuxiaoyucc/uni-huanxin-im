@@ -22,8 +22,6 @@ Dispatcher.prototype = {
 		}
 	},
 	fire(type, ...args){
-		console.log(type);
-		console.log(...args);
 		let cbtypes = dispCbs[dispIns.indexOf(this)];
 		let cbs = cbtypes[type] = (cbtypes[type] || []);
 		for(let i = 0; i < cbs.length; i++){

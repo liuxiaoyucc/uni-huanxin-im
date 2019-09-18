@@ -96,11 +96,10 @@
 						      	if(this.$options.globalData.saveFriendList[i].from === message.from){
 						      		this.$options.globalData.saveFriendList[i] = message
 						      		disp.fire("em.xmpp.subscribe");
-						      		return;
+									return;
 						 		}
 						    }
 							this.$options.globalData.saveFriendList.push(message);
-							console.log(JSON.stringify(this.$options.globalData.saveFriendList));
 							disp.fire("em.xmpp.subscribe");
 						}
 						break;

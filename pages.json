@@ -63,6 +63,10 @@
             "path" : "pages/add_contact/add_contact",
             "style" : {}
         }
+        ,{
+            "path" : "pages/notification/notification",
+            "style" : {}
+        }
     ],
 	
 	"globalStyle": {
@@ -87,6 +91,11 @@
 	        "selectedIconPath": "static/images/comtactshighlight@2x.png",
 	        "text": "通讯录"
 	    },{
+		    "pagePath": "pages/notification/notification",
+		    "iconPath": "static/images/notice.png",
+		    "selectedIconPath": "static/images/noticeActive.png",
+		    "text": "通知"
+		},{
 	        "pagePath": "pages/setting/setting",
 	        "iconPath": "static/images/setting@2x.png",
 	        "selectedIconPath": "static/images/settinghighlight@2x.png",

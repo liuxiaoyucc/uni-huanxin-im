@@ -60,7 +60,7 @@
 			
 			into_groupNot(){
 				uni.navigateTo({
-					url: "../notification_friend/notification_friend"
+					url: "../notification_group/notification_group"
 				});
 			},
 		}

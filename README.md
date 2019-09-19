@@ -21,9 +21,7 @@
 * [环信即时通讯](https://www.easemob.com/)
 
 ### More
-__欢迎提issue__
-
-__欢迎star :star: :star: :star:__
+__也没啥了...欢迎star :star: :star: :star:__
 
 
 

@@ -30,7 +30,7 @@ __欢迎star :star: :star: :star:__
 ### Run
 
 1. git clone 到本地
-2. 将项目拖入[HbuilderX](https://www.dcloud.io/hbuilderx.html)中运行到手机或模拟器
+2. 将项目拖入[HbuilderX](https://www.dcloud.io/hbuilderx.html)中运行到手机/模拟器/微信开发者工具/H5
 
 
 ### Contribution

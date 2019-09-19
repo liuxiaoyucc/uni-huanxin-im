@@ -34,9 +34,9 @@ WebIM.isDebug = function(option){
 		if (value) {
 			Strophe.Strophe.Connection.prototype.rawOutput = function(data){
 				try{
-					console.group("%csend # " + ts(), "color: blue; font-size: large");
+					// console.group("%csend # " + ts(), "color: blue; font-size: large");//这函数在app端不能用
 					console.log("%c" + data, "color: blue");
-					console.groupEnd();
+					// console.groupEnd();
 				}
 				catch(e){
 					console.log(e);

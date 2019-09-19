@@ -12,12 +12,12 @@
 				<icon type="search" size="13"></icon>
 				<input placeholder="请输入好友用户名" 
 					placeholder-style="color:#CFCFCF;line-height:20px;font-size:12px;" 
-					auto-focus
+					:focus="focus"
 					confirm-type="Search"
 					type='text'
 					@confirm="onSearch"
 					@input="onInput"
-					:value="input_code"
+					v-model="input_code"
 					></input>
 					<icon type="clear" size="13" @tap.stop.prevent="clearInput" v-if="show_clear"></icon>
 			</view>
@@ -43,6 +43,9 @@
 				search_btn: true,
 				search_chats: false,
 				show_clear: false,
+				input_code: '',
+				isdisable: false,
+				focus:false,
 			}
 		},
 		onLoad() {
@@ -52,6 +55,9 @@
 			openSearch(){
 				this.search_btn = false;
 				this.search_chats = true;
+				setTimeout(()=> {
+					this.focus = true;
+				}, 300);
 			},
 			
 			onInput(e){
@@ -74,6 +80,7 @@
 				this.search_btn = true;
 				this.search_chats = false;
 				this.show_clear = false;
+				this.focus = false;
 			},
 			
 			add_friend(){

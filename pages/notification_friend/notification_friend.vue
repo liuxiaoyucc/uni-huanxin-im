@@ -18,7 +18,7 @@
 			<view class="buttonContent">
 				<view v-if="!item.typeText" :data-from="item.from" class="rejectBtn" @tap="reject">拒绝</view>
 				<view v-if="!item.typeText" class="centerLine"></view>
-				<view v-if="!item.typeText" :data-from="item.from" class="agreeBtn" @tap="agree">同意</view>
+				<view v-if="!item.typeText" class="agreeBtn" @tap="agree(item.from)">同意</view>
 				<view v-if="item.typeText" class="actionDone">{{ item.typeText }}</view>
 			</view>
 	
@@ -45,6 +45,7 @@
 			this.myName = uni.getStorageSync("myUsername");
 			// this.friendList = uni.getStorageSync("friendNotiData");
 			this.friendList = getApp().globalData.saveFriendList;
+
 		},
 		methods: {
 			removeAndRefresh(removeId){
@@ -54,34 +55,26 @@
 						idx = k;
 					}
 				});
-				this.friendList.splice(idx, 1);
-				getApp().globalData.saveFriendList.splice(idx, 1);
-				// if(!this.friendList.length){
-				// 	uni.navigateBack({
-				// 		url: "../main/main?myName=" + this.myName
-				// 	});
-				// }
-				// else{
-				// 	this.friendList = this.friendList
-				// }
+				this.friendList.splice(idx, 1);//引用,删除一个就行
+				// getApp().globalData.saveFriendList.splice(idx, 1);
 			},
 			
-			agree(event){
-				console.log(event);
+			agree(from_user){
+				
 				var me = this;
 				// 同意（无回调）
 				this.$im.conn.subscribed({
-					to: event.currentTarget.dataset.from,
+					to: from_user,
 					message: "[resp:true]",
 				});
-				// 需要反向添加对方好友（无回调）
+				// 需要反向添加对方好友（无回调）这个暂时注释掉,避免自动加好友时,一方不在线导致加好友失败
 				// this.$im.conn.subscribe({
-				// 	to: event.currentTarget.dataset.from,
+				// 	to: from_user,
 				// 	message: "[resp:true]",
 				// });
-			
+				
 				this.friendList.forEach((item) => {
-					if (item.from == event.currentTarget.dataset.from) {
+					if (item.from == from_user) {
 						item.type = 'subscribed';
 						item.typeText = '已同意';
 						uni.setStorageSync("friendNotiData", this.friendList)
@@ -89,7 +82,8 @@
 						this.friendList = this.friendList
 					}
 				})
-				this.removeAndRefresh(event.currentTarget.dataset.from);
+				
+				this.removeAndRefresh(from_user);
 				this.getRoster();
 			},
 			getRoster(){

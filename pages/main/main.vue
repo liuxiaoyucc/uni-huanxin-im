@@ -486,7 +486,6 @@
 				let number = 0;
 				for (let j = 0; j < someArr.length; ++j) {
 				    uni.createSelectorQuery().select('#inToView' + someArr[j].id).boundingClientRect(function (rect) {
-						console.log(rect);
 				      	number = rect.height + number;
 				      	var newArry = [{ 'height': number, 'key': rect.dataset.id, "name": someArr[j].region}]
 				      	//that.setData({

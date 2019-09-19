@@ -83,6 +83,12 @@
 				"navigationBarTitleText": "群组邀请"
 			}
         }
+        ,{
+            "path" : "pages/setting/general",
+            "style" : {
+				"navigationBarTitleText": "通用"
+			}
+        }
     ],
 	
 	"globalStyle": {

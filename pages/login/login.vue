@@ -73,10 +73,7 @@
 					this.$helper.toast('none', '请输入密码！', 2000, false, 'bottom');
 					return;
 				}
-				uni.setStorage({
-					key: "myUsername",
-					data: test_account || this.name.toLowerCase()
-				});
+				uni.setStorageSync("myUsername",test_account || this.name.toLowerCase());
 
 				this.$conn.open({
 					apiUrl: this.$im.config.apiURL,

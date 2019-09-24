@@ -11,6 +11,7 @@
 			userInfo: null,
 			saveFriendList: [],
 			saveGroupInvitedList: [],
+			groupList: [],
 			isIPX: false //是否为iphone X
 		},
 		onLaunch: function() {
@@ -47,7 +48,6 @@
 				onOpened: (message)=>{
 					this.$im.conn.setPresence();
 					console.log('登录成功登录成功登录成功登录成功登录成功登录成功登录成功');
-
 					if(this.getCurrentRoute() == "pages/login/login" || getCurrentRoute() == "pages/login_token/login_token"){
 						this.onLoginSuccess();
 					}

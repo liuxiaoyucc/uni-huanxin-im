@@ -89,6 +89,24 @@
 				"navigationBarTitleText": "通用"
 			}
         }
+        ,{
+            "path" : "pages/groups/groups",
+            "style" : {
+				"navigationBarTitleText": "群组"
+			}
+        }
+        ,{
+            "path" : "pages/add_groups/add_groups",
+            "style" : {
+				"navigationBarTitleText": "新建群组"
+			}
+        }
+        ,{
+            "path" : "pages/groupSetting/groupSetting",
+            "style" : {
+				"navigationBarTitleText": "群资料"
+			}
+        }
     ],
 	
 	"globalStyle": {

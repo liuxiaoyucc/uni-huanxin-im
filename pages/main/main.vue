@@ -168,6 +168,8 @@
 			this.myName = uni.getStorageSync("myUsername");
 		},
 		onShow() {
+			this.myName = uni.getStorageSync("myUsername");//这个也要放在onShow中，uniapp切换账号tabbar页不会卸载，会导致实际用户和登录用户不符的问题 --xyliu
+			
 			this.messageNum = getApp().globalData.saveFriendList.length
 			this.unReadSpotNum = getApp().globalData.unReadMessageNum > 99 ? '99+' : getApp().globalData.unReadMessageNum;
 			this.unReadNoticeNum = getApp().globalData.saveGroupInvitedList.length;

@@ -43,6 +43,7 @@
 			return {
 				playStatus: playStatus,
 				curStatus: playStatus.STOP,
+				style: '',
 				time: "0'",
 				opcity: 1,
 				comps: {
@@ -113,30 +114,35 @@
 			audioPlay(){
 				uni.inter && clearInterval(uni.inter)
 				let audioCtx = this.comps.audioCtx;
+				
+				
+				
 				var curl = ''
 				uni.downloadFile({
-				url: this.msg.msg.data,
-				header: {
-					"X-Requested-With": "XMLHttpRequest",
-					Accept: "audio/mp3",
-					Authorization: "Bearer " + this.msg.msg.token
-				},
-				success(res){
-					curl = res.tempFilePath;
-					console.log('音频本地',audioCtx)
-					//renderableMsg.msg.url = res.tempFilePath;
-					audioCtx.src = curl;
-					audioCtx.play();
-					
-				},
-				fail(e){
-					console.log("downloadFile failed", e);
-					uni.showToast({
-						title: "下载失败",
-						duration: 1000
-					});
-				}
-			});
+					url: this.msg.msg.data,
+					header: {
+						"X-Requested-With": "XMLHttpRequest",
+						Accept: "audio/mp3",
+						Authorization: "Bearer " + this.msg.msg.token
+					},
+					success(res){
+						curl = res.tempFilePath;
+						console.log(curl);
+						console.log('音频本地',audioCtx)
+						//renderableMsg.msg.url = res.tempFilePath;
+						console.log(audioCtx);
+						audioCtx.src = curl;
+						audioCtx.play();
+						
+					},
+					fail(e){
+						console.log("downloadFile failed", e);
+						uni.showToast({
+							title: "下载失败",
+							duration: 1000
+						});
+					}
+				});
 			
 			},
 			

@@ -65,7 +65,6 @@
 			});
 			
 			this.myName = options.myName;
-			console.log(this.myName);
 		},
 		onShow() {
 			this.listGroups();

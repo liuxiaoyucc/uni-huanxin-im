@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<chat id="chat" :username="username" chatType="singleChat"></chat>
+		<chat ref="chat" :username="username" chatType="singleChat"></chat>
 	</view>
 </template>
 
@@ -34,7 +34,7 @@
 			onPullDownRefresh: function() {
 				uni.showNavigationBarLoading();
 				//这里触发chat组件的getMore方法 --xyliu
-				// this.selectComponent('#chat').getMore()
+				this.$refs.chat.getMore();
 				// 停止下拉动作
 				uni.hideNavigationBarLoading();
 				uni.stopPullDownRefresh();

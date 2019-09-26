@@ -1,10 +1,7 @@
 <template>
 	<view class="audio-player" @tap="audioPlay" :style="{opacity: opcity}">
 		<text class="time">{{ time }}</text>
-		<view
-			class="controls play-btn"
-		
-			@tap="audioPlay">
+		<view class="controls play-btn">
 			<image :src="style == 'self'? '/static/images/voicemsgmy.png' : '/static/images/voicemsg.png'"></image>
 		</view>
 		<!-- <view
@@ -49,6 +46,12 @@
 				comps: {
 					audioCtx: null,
 				},
+				inter: ()=>{},
+				onPlaying: ()=>{},
+				onPause: ()=>{},
+				onDone: ()=>{},
+				onTimeUpdate: ()=>{},
+				onWait: ()=>{}
 			}
 		},
 		beforeMount(){
@@ -75,8 +78,8 @@
 			this.onPlaying = () => {
 				//console.log("onPlaying", JSON.stringify(this.data));
 				this.curStatus = playStatus.PLAYING
-				uni.inter && clearInterval(uni.inter)
-				uni.inter = setInterval(() => {
+				this.inter && clearInterval(this.inter)
+				this.inter = setInterval(() => {
 					let opcity = this.opcity;
 					this.opcity = opcity == 1 ? 0.4 : 1
 				}, 500)
@@ -96,7 +99,7 @@
 				this.curStatus = playStatus.STOP
 				this.opcity = 1
 
-				clearInterval(wx.inter)
+				clearInterval(this.inter)
 			};
 			// 多次播放会丢失这个回调
 			this.onTimeUpdate = () => {
@@ -112,38 +115,41 @@
 		},
 		methods: {
 			audioPlay(){
-				uni.inter && clearInterval(uni.inter)
+				let me = this;
+				console.log(this.inter);
+				this.inter && clearInterval(this.inter)
 				let audioCtx = this.comps.audioCtx;
-				
-				
-				
 				var curl = ''
-				uni.downloadFile({
-					url: this.msg.msg.data,
-					header: {
-						"X-Requested-With": "XMLHttpRequest",
-						Accept: "audio/mp3",
-						Authorization: "Bearer " + this.msg.msg.token
-					},
-					success(res){
-						curl = res.tempFilePath;
-						console.log(curl);
-						console.log('音频本地',audioCtx)
-						//renderableMsg.msg.url = res.tempFilePath;
-						console.log(audioCtx);
-						audioCtx.src = curl;
-						audioCtx.play();
-						
-					},
-					fail(e){
-						console.log("downloadFile failed", e);
-						uni.showToast({
-							title: "下载失败",
-							duration: 1000
-						});
-					}
-				});
-			
+				
+				
+				if (this.msg.msg.local_url) {
+					
+					audioCtx.src = this.msg.msg.local_url;
+					audioCtx.play();
+				}else {
+					uni.downloadFile({
+						url: this.msg.msg.data,
+						header: {
+							"X-Requested-With": "XMLHttpRequest",
+							Accept: "audio/mp3",
+							Authorization: "Bearer " + this.msg.msg.token
+						},
+						success(res){
+							curl = res.tempFilePath;
+							me.msg.msg.local_url = res.tempFilePath;
+							audioCtx.src = curl;
+							audioCtx.play();
+						},
+						fail(e){
+							console.log("downloadFile failed", e);
+							uni.showToast({
+								title: "下载失败",
+								duration: 1000
+							});
+						}
+					});
+				}
+				
 			},
 			
 			audioPause(auCtx){

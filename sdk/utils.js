@@ -629,10 +629,10 @@
 						error(res);
 					}
 				},
-				complete(){
+				complete:(e)=>{
 					console.log("wx.request.complete", arguments);
 				},
-				fail(){
+				fail: (e)=>{
 					console.log("wx.request.fail", arguments);
 				}
 			});

@@ -488,11 +488,12 @@
 				let number = 0;
 				for (let j = 0; j < someArr.length; ++j) {
 				    uni.createSelectorQuery().select('#inToView' + someArr[j].id).boundingClientRect(function (rect) {
-				      	number = rect.height + number;
-				      	var newArry = [{ 'height': number, 'key': rect.dataset.id, "name": someArr[j].region}]
-				      	//that.setData({
-				        	oHeight = oHeight.concat(newArry)
-				      	//})
+						//ios下为啥rect 为null哇，难受
+						if (rect) {
+							number = rect.height + number;
+							var newArry = [{ 'height': number, 'key': rect.dataset.id, "name": someArr[j].region}]
+							oHeight = oHeight.concat(newArry)
+						}
 				    }).exec();
 				};
 				// #endif

@@ -17,8 +17,8 @@
 <script>
 	let audioCtxFc = require("./audioCtxFactory");
 	let playStatus = require("./playStatus");
-	// if (wx.setInnerAudioOption) {
-	//   wx.setInnerAudioOption({
+	// if (uni.setInnerAudioOption) {
+	//   uni.setInnerAudioOption({
 	//     obeyMuteSwitch: false,
 	//     autoplay: true
 	//   })

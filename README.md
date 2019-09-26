@@ -20,11 +20,6 @@
 
 * [环信即时通讯](https://www.easemob.com/)
 
-### Morerrrrrrrrrrrrrrr
-__也没啥了...欢迎star :star: :star: :star:__
-
-
-
 ### 运行一下吧
 
 1. git clone 到本地
@@ -42,6 +37,10 @@ __欢迎PR__
 	UVE6CQkyMTk5ODQyMzQxQHFxLmNvbQ==
 	
 	R21haWw6CQljY2xpdXh5QGdtYWlsLmNvbQ==
+
+
+### MORE
+__也没啥了...欢迎star :star: :star: :star:__
 
 ### 先睹为快
 <img title="login" src="https://user-images.githubusercontent.com/33248133/64444919-cca74000-d107-11e9-86ff-edd330ff5398.png" width='33%'><img title="chat" src="https://user-images.githubusercontent.com/33248133/64805934-ba744880-d5c4-11e9-92d2-032881167b4d.png" width='33%'><img title="chatroom" src="https://user-images.githubusercontent.com/33248133/64805936-bc3e0c00-d5c4-11e9-82db-90749689c2b2.jpg" width='33%'>

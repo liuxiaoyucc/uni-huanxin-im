@@ -99,52 +99,62 @@
 			this.visibility = false;
 		},
 		created() {
-			
+			console.log('created');
+			// #ifdef H5
+			this.create_or_onready();
+			// #endif
 		},
 		
 		onReady() {
-			let me = this;
-			
-			let username = this.username;
-			let myUsername = uni.getStorageSync("myUsername");
-			
-			let sessionKey = username.groupId
-				? username.groupId + myUsername
-				: username.your + myUsername;
-			
-			let chatMsg = uni.getStorageSync(sessionKey) || [];
-			this.renderMsg(null, null, chatMsg, sessionKey);
-			uni.setStorageSync(sessionKey, null);
-			
-			
-			disp.on('em.xmpp.error.sendMsgErr', function(err) {
-				curMsgMid = err.data.mid
-				isFail = true
-				return
-			});
-			
-			msgStorage.on("newChatMsg", function(renderableMsg, type, curChatMsg, sesskey){
-				me.curChatMsg = curChatMsg;
-				if(!me.visibility) return;
-				// 判断是否属于当前会话
-				if(username.groupId){
-					// 群消息的 to 是 id，from 是 name
-					if(renderableMsg.info.from == username.groupId || renderableMsg.info.to == username.groupId){
+			console.log('onready');
+			// #ifndef H5
+			this.create_or_onready();
+			// #endif
+		},
+		methods: {
+			create_or_onready() {
+				console.log('1');
+				let me = this;
+				
+				let username = this.username;
+				let myUsername = uni.getStorageSync("myUsername");
+				let sessionKey = username.groupId
+					? username.groupId + myUsername
+					: username.your + myUsername;
+				
+				let chatMsg = uni.getStorageSync(sessionKey) || [];
+				console.log(chatMsg);
+				this.renderMsg(null, null, chatMsg, sessionKey);
+				uni.setStorageSync(sessionKey, null);
+				console.log('2');
+				
+				disp.on('em.xmpp.error.sendMsgErr', function(err) {
+					curMsgMid = err.data.mid
+					isFail = true
+					return
+				});
+				
+				msgStorage.on("newChatMsg", function(renderableMsg, type, curChatMsg, sesskey){
+					me.curChatMsg = curChatMsg;
+					if(!me.visibility) return;
+					// 判断是否属于当前会话
+					if(username.groupId){
+						// 群消息的 to 是 id，from 是 name
+						if(renderableMsg.info.from == username.groupId || renderableMsg.info.to == username.groupId){
+							if (sesskey == sessionKey) {
+								me.renderMsg(renderableMsg, type, curChatMsg, sessionKey, 'newMsg');
+							}
+							
+						}
+					}
+					else if(renderableMsg.info.from == username.your || renderableMsg.info.to == username.your){
 						if (sesskey == sessionKey) {
 							me.renderMsg(renderableMsg, type, curChatMsg, sessionKey, 'newMsg');
 						}
-						
 					}
-				}
-				else if(renderableMsg.info.from == username.your || renderableMsg.info.to == username.your){
-					if (sesskey == sessionKey) {
-						me.renderMsg(renderableMsg, type, curChatMsg, sessionKey, 'newMsg');
-					}
-				}
-			
-			});
-		},
-		methods: {
+				
+				});
+			},
 			normalScroll(){
 				this.view = LIST_STATUS.NORMAL
 			},
@@ -207,8 +217,8 @@
 				
 				historyChatMsgs = historyChatMsgs.concat(curChatMsg);
 			
-				//console.log('当前历史',renderableMsg)
-				//console.log('历史消息', historyChatMsgs)
+				// console.log('当前历史',renderableMsg)
+				console.log('历史消息', historyChatMsgs)
 				if(!historyChatMsgs.length) return;
 				if (isnew == 'newMsg') {
 					this.chatMsg = this.chatMsg.concat(curChatMsg)

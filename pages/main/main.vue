@@ -17,7 +17,6 @@
 				<!-- 左侧列表内容部分 -->
 				<scroll-view
 				class="content" 
-				:class="gotop ?  'goTop' : 'goback'"
 				enable-back-to-top :scroll-into-view="toView" 
 				scroll-y="true" scroll-with-animation="true" 
 				@scroll="on_page_scroll" 
@@ -48,7 +47,7 @@
 					<!-- other item -->
 					<view class="contain">
 						<view class="otherItem" @tap="add_new">
-							<image src="/static/images/invite_theme@2x.png"  :data-username="name"></image>
+							<image src="/static/images/invite_theme@2x.png"></image>
 							<text>添加好友</text>
 							<!-- <image class='line' src="/static/images/line.png"></image> -->
 							<!-- 0.5px border -->
@@ -84,7 +83,7 @@
 					</view> 
 				  </scroll-view> 
 				  <!-- 顶部固定分类 -->
-				  <view class="list-fixed" :class="[fixedTitle=='' ? 'hide':'',gotop?'fixedTitleTop': '']" v-if="showFixedTitile">
+				  <view class="list-fixed" :class="fixedTitle=='' ? 'hide':''" v-if="showFixedTitile">
 						<view class="fixed-title">
 							{{fixedTitle}}
 						</view>
@@ -130,7 +129,8 @@
 				oHeight:[],
 				scroolHeight:0,
 				show_clear: false,
-				isHideLoadMore: true
+				isHideLoadMore: true,
+				gotop: false,
 			}
 		},
 		onLoad() {
@@ -717,9 +717,14 @@ page{
 	/* padding-bottom: 270rpx; */
 	box-sizing: border-box; 
 	height: 100%;
+	/* #ifdef H5 */
+	height: calc(100% - 200upx);
+	/* #endif */
 	position: fixed;
 	/* top: 128rpx; */
-	top: 0;
+	/* #ifdef H5 */
+	top: 88upx;
+	/* #endif */
 } 
 
 .location{
@@ -842,26 +847,14 @@ page{
 	font-size: 28rpx;
 	padding: 0 20rpx;
 	/* top: 128rpx; */
-	top: 0;
+	/* #ifdef H5 */
+	top: 88upx;
+	/* #endif */
 }
 .fixed-title{
 	color:#2cc1d1;
 }
 
-.goTop{
-	top: 0;
-	transition: top 0.5s;
-	padding-bottom: 104rpx!important;
-}
-.goTopX{
-	top: 0rpx;
-	transition: top 0.5s;
-	padding-bottom: 140rpx!important;
-}
-.goback{
-	top: 0;
-	transition: top 0.5s;
-}
 .fixedTitleTop{
 	top: 0;
 }

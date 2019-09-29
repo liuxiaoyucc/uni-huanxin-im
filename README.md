@@ -1,6 +1,6 @@
 # :speech_balloon: uni-huanxin-im
 
-### 介绍一下你自己
+### 这是个啥？
 
 基于环信小程序sdk的uniapp版即时通讯app	
 安卓， iOS 及微信开发者工具测试通过，(其他平台由于条件限制尚未测试， 请自行尝试)
@@ -11,12 +11,12 @@
 	
 	username: xyliu 	password:  1q2w3e4r
 
-### 技术栈
+### 用到了啥？
 
 * [VueJs](https://cn.vuejs.org/)
 * [uni-app](https://uniapp.dcloud.io/)
 
-### 支持
+### IM 平台
 
 * [环信即时通讯](https://www.easemob.com/)
 
@@ -26,11 +26,11 @@
 2. 将项目拖入[HbuilderX](https://www.dcloud.io/hbuilderx.html)中运行到手机/模拟器/微信开发者工具/H5
 
 
-### 想参与进来？
+### 想参与？
 
 __欢迎PR__
 
-### 这里可以找到我...
+### 疑问?
 
 邮箱: 
 

@@ -99,21 +99,19 @@
 			this.visibility = false;
 		},
 		created() {
-			console.log('created');
+			//app端虽然会触发created，但是读取local storage为空
 			// #ifdef H5
 			this.create_or_onready();
 			// #endif
 		},
 		
 		onReady() {
-			console.log('onready');
 			// #ifndef H5
 			this.create_or_onready();
 			// #endif
 		},
 		methods: {
 			create_or_onready() {
-				console.log('1');
 				let me = this;
 				
 				let username = this.username;
@@ -123,10 +121,9 @@
 					: username.your + myUsername;
 				
 				let chatMsg = uni.getStorageSync(sessionKey) || [];
-				console.log(chatMsg);
+				
 				this.renderMsg(null, null, chatMsg, sessionKey);
 				uni.setStorageSync(sessionKey, null);
-				console.log('2');
 				
 				disp.on('em.xmpp.error.sendMsgErr', function(err) {
 					curMsgMid = err.data.mid

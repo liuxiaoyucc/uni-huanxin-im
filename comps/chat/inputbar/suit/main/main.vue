@@ -123,7 +123,12 @@
 				if(this.chatType == msgType.chatType.CHAT_ROOM){
 					msg.setGroup("groupchat");
 				}
-				this.$im.conn.send(msg.body);
+				try{
+					this.$im.conn.send(msg.body);
+				}catch(e){
+					console.log(e);
+				}
+				
 				uni.$emit('saveSendMsg', {
 					msg: msg,
 					type: msgType.TEXT,

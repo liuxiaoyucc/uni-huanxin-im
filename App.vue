@@ -5,6 +5,7 @@
 	
 	let disp = require("utils/broadcast");
 	let logout = false;
+	let is_reconnect = false;
 	export default {
 		globalData: {
 			unReadMessageNum: 0,
@@ -15,7 +16,9 @@
 			isIPX: false //是否为iphone X
 		},
 		onLaunch: function() {
-			console.log('App Launch')
+
+
+
 			var me = this;
 			var logs = uni.getStorageSync("logs") || [];
 			logs.unshift(Date.now());
@@ -48,15 +51,22 @@
 				onOpened: (message)=>{
 					this.$im.conn.setPresence();
 					console.log('登录成功登录成功登录成功登录成功登录成功登录成功登录成功');
+					message.accessToken && uni.setStorageSync("myToken", message.accessToken);
+					if (is_reconnect) {
+						uni.hideToast();
+						this.$helper.toast('success', '登陆成功', 2000)
+						is_reconnect = false;
+					}
 					if(this.getCurrentRoute() == "pages/login/login" || getCurrentRoute() == "pages/login_token/login_token"){
 						this.onLoginSuccess();
 					}
+					
 				},
 				onReconnect: ()=>{
 					this.$helper.toast('loading', '重连中...', 2000)
 				},
 				onSocketConnected: ()=>{
-					this.$helper.toast('success', 'socket连接成功', 2000)
+					this.$helper.toast('success', '登陆成功', 2000)
 				},
 				onClosed: ()=>{
 					this.$helper.toast('none', '网络已断开', 2000)
@@ -308,8 +318,23 @@
 				},
 			});
 			
+			// #ifdef H5
+			if(!this.$im.conn.isOpened() && uni.getStorageSync("myToken") && uni.getStorageSync("myUsername")) {
+				is_reconnect = true;
+				this.$helper.toast('loading', '自动登陆中...', 10000, true);
+				//尝试使用token重新登陆
+				this.$conn.open({
+					apiUrl: this.$im.config.apiURL,
+					user: uni.getStorageSync("myUsername"),
+					accessToken: uni.getStorageSync("myToken"),
+					appKey: this.$im.config.appkey
+				});
+			}
+			// #endif
+			
+			
 		},
-		onShow: function() {
+		onShow() {
 			console.log('App Show')
 		},
 		onHide: function() {
@@ -318,7 +343,7 @@
 		methods: {
 
 			onLoginSuccess(){
-				uni.hideToast()
+				uni.hideToast();
 				uni.switchTab({
 					url: "../chat/chat"
 				});

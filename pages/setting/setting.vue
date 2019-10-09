@@ -51,8 +51,7 @@
 					success: (res)=>{
 						if(res.confirm){
 							this.$im.conn.close();
-							// wx.closeSocket()
-							uni.redirectTo({
+							uni.reLaunch({
 								url: "../login/login"
 							});
 						}

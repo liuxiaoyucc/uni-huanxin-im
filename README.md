@@ -28,6 +28,7 @@
 
 ### 想参与？
 
+__有问题提Issue，或者[DCloud插件市场](https://ext.dcloud.net.cn/plugin?id=825)评论__
 __欢迎PR__
 
 ### 疑问?
@@ -40,7 +41,10 @@ __欢迎PR__
 
 
 ### MORE
-__也没啥了...欢迎star :star: :star: :star:__
+__也没啥了...__
+__如果觉得项目对您有帮助...__
+__欢迎star :star: :star: :star:__
+__欢迎五星__
 
 ### 先睹为快
 <img title="login" src="https://user-images.githubusercontent.com/33248133/64444919-cca74000-d107-11e9-86ff-edd330ff5398.png" width='33%'><img title="chat" src="https://user-images.githubusercontent.com/33248133/64805934-ba744880-d5c4-11e9-92d2-032881167b4d.png" width='33%'><img title="chatroom" src="https://user-images.githubusercontent.com/33248133/64805936-bc3e0c00-d5c4-11e9-82db-90749689c2b2.jpg" width='33%'>

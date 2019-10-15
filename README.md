@@ -10,6 +10,8 @@
 	username: cc	 	password:	1q2w3e4r
 	
 	username: xyliu 	password:  1q2w3e4r
+	
+__注意: 环信试用版最高注册用户只有100个,如果发现注册不了,可能是注册用户达到上线,不是程序问题__
 
 ### 用到了啥？
 

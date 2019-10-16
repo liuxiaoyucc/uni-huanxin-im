@@ -104,9 +104,8 @@
 					
 				    uni.getSetting({
 				      	success: (res) => {
-							console.log(res);
-							return;
-					        let recordAuth = res.authSetting['scope.record']
+							// return;
+					        let recordAuth = res.authSetting['scope.record'];
 					        if (recordAuth == false) { //已申请过授权，但是用户拒绝
 					          	uni.openSetting({
 						            success: function (res) {
@@ -130,12 +129,15 @@
 					        } else { // 第一次进来，未发起授权
 						        uni.authorize({
 						            scope: 'scope.record',
-						            success: () => {//授权成功
+						            success() {//授权成功
 						              	uni.showToast({
 								        	title: "授权成功",
 								        	icon: "success"
 								        })
-						            }
+						            },
+									fail(e) {
+										console.log(e);
+									}
 						        })
 					        }
 					    },

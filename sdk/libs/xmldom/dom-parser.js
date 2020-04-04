@@ -252,10 +252,10 @@ if (typeof require == 'function') {
     var DOMImplementation = exports.DOMImplementation = require('./dom').DOMImplementation;
     var XMLSerializer = exports.XMLSerializer = require('./dom').XMLSerializer;
     exports.DOMParser = DOMParser;
-    var DOMParser = {
+    var DOM_Parser = {
         DOMImplementation: DOMImplementation,
         XMLSerializer: XMLSerializer,
         DOMParser: DOMParser
     }
-    module.exports = DOMParser
+    module.exports = DOM_Parser
 }

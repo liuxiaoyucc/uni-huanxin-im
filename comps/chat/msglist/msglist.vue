@@ -104,8 +104,8 @@
 			this.create_or_onready();
 			// #endif
 		},
-		
-		onReady() {
+		// onReady v3模式onReady不执行改成mounted
+		mounted() {
 			// #ifndef H5
 			this.create_or_onready();
 			// #endif

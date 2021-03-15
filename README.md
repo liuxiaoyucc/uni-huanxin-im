@@ -1,4 +1,6 @@
-# :speech_balloon: uni-huanxin-im
+# :speech_balloon: uni-huanxin-im (停止维护)
+
+**此项目为我个人修改官方demo而来, 目的是为了适配uniapp, 并不是环信官方维护的项目, 并且随着uniapp和环信的迭代, 本项目也停止维护**
 
 ### 这是个啥？
 
